@@ -27,7 +27,7 @@ if (!dbURI) {
   console.error("MongoDB URI not found in .env file. Please add DB_URI.");
   process.exit(1);
 }
-const PORT = process.env.PORT || 5000;
+
 
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on port ${PORT}`);
