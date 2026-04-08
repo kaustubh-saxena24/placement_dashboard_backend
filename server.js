@@ -28,18 +28,14 @@ if (!dbURI) {
   process.exit(1);
 }
 
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
+// connect DB separately
 mongoose.connect(dbURI)
-  .then(() => {
-    console.log('Successfully connected to MongoDB Atlas!');
-    
-    app.listen(PORT, () => {
-      console.log(`Server is running on http://localhost:${PORT}`);
-    });
-  })
-  .catch(err => {
-    console.error('Database connection error:', err);
-    process.exit(1);
-  });
+  .then(() => console.log('MongoDB connected'))
+  .catch(err => console.error(err));
 
 // --- API Routes ---
 app.use('/api/students', studentRoutes);
